@@ -1,4 +1,4 @@
-import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity, CheckBox } from 'react-native';
 
 
 import { ThemedText } from '@/components/ThemedText';
@@ -13,6 +13,7 @@ export default function HomeScreen() {
     <View style={styles.overlay} />
       <ThemedView style={styles.loginContainer}>
           <ThemedText style={styles.signIn}>Sign in</ThemedText>
+          <ThemedView style={styles.alinhar}>
           <TextInput style={styles.input} placeholder='Email or phone number'></TextInput>
           <br></br>
           <TextInput style={styles.input} placeholder='Password' secureTextEntry={true}></TextInput>
@@ -21,12 +22,17 @@ export default function HomeScreen() {
       </TouchableOpacity> 
         <ThemedText style={styles.or}>Or</ThemedText>
         <TouchableOpacity style={styles.logarCod}>
-        <ThemedText style={styles.buttonText}>Sign in with a code</ThemedText>
+        <ThemedText>Sign in with a code</ThemedText>
       </TouchableOpacity> 
+      </ThemedView>
         <ThemedText style={styles.pass}>Forgot password?</ThemedText>
         <br></br>
+        <ThemedView style={styles.checkContainer}>
+        <CheckBox style={styles.checkbox}/>
+        <ThemedText style={styles.check}>Remember me</ThemedText>
+        </ThemedView>
         <ThemedText style={styles.textobranco}>New to netflix? Sign up now</ThemedText>
-        <ThemedText style={styles.textobranco}>This page is protected by Google reCAPTCHA to ensure you're not a bot. <ThemedText style={styles.learn}> Learn more</ThemedText></ThemedText>
+        <ThemedText style={styles.textoCaptcha}>This page is protected by Google reCAPTCHA to ensure you're not a bot. <ThemedText style={styles.learn}> Learn more</ThemedText></ThemedText>
       </ThemedView>    
       </ImageBackground>
       </ThemedView>
@@ -41,15 +47,17 @@ const styles = StyleSheet.create({
       backgroundColor: 'black',
     },
     loginContainer: {
-      paddingLeft: 20,
-      margin: 10,
-      alignContent: 'center',
-      backgroundColor: 'rgba(0, 0, 0, 0.7)', // Cor de fundo do container
+      padding: '5%',
+      backgroundColor: 'rgba(0, 0, 0, 0.6)', // Cor de fundo do container
       resizeMode: 'cover',
       width: 350,
       marginTop: 90,
-      display: 'flex',
-      alignItems: 'center'
+       },
+    alinhar: {
+      alignItems: 'center',
+      margin: 6,
+      backgroundColor: 'rgba(0, 0, 0, 0.0)',
+      paddingTop: 20,
     },
     textobranco: {
       color: 'white',
@@ -60,7 +68,8 @@ const styles = StyleSheet.create({
       marginTop: 15,
    },
     learn: {
-      color: '#0000FF'
+      color: '#0000FF',
+      fontSize: 10,
     },
     or: {
       textAlign: 'center',
@@ -130,6 +139,22 @@ const styles = StyleSheet.create({
         borderLeftColor: 'grey',
         borderTopWidth: 1,
         borderTopColor: 'grey',
+      },
+      checkContainer: {
+        flexDirection: 'row',
+        backgroundColor: 'rgba(0, 0, 0, 0.0)',
+        padding: '5%',
+      },
+      checkbox: {
+        width: 15,
+        height: 15,
+        position: 'relative',
+        right: 10,
+        top: 5,
+      },
+      textoCaptcha: {
+        fontSize: 10,
+        padding: 30
       }
 
   },
