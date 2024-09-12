@@ -1,38 +1,36 @@
-import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity, CheckBox } from 'react-native';
+import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity, CheckBox, Linking } from 'react-native';
 
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Link } from '@react-navigation/native';
 
 
 export default function HomeScreen() {
   return (
- 
     <ThemedView style={styles.body}>    
     <ImageBackground source={require('./fundo.jpg')} style={styles.background}>
+    <Image style={styles.logo} source={require('./netflix.png')}></Image>
     <View style={styles.overlay} />
-      <ThemedView style={styles.loginContainer}>
-          <ThemedText style={styles.signIn}>Sign in</ThemedText>
-          <ThemedView style={styles.alinhar}>
+    <ThemedView style={styles.alinhar}><ThemedView style={styles.loginContainer}></ThemedView>
+          <ThemedText style={styles.signIn}>Sign In</ThemedText>
           <TextInput style={styles.input} placeholder='Email or phone number'></TextInput>
           <br></br>
           <TextInput style={styles.input} placeholder='Password' secureTextEntry={true}></TextInput>
           <TouchableOpacity style={styles.logar}>
-        <ThemedText style={styles.buttonText}>Sign in</ThemedText>
+        <ThemedText>Sign In</ThemedText>
       </TouchableOpacity> 
         <ThemedText style={styles.or}>Or</ThemedText>
-        <TouchableOpacity style={styles.logarCod}>
-        <ThemedText>Sign in with a code</ThemedText>
-      </TouchableOpacity> 
-      </ThemedView>
+        <Link to='/signUp'><TouchableOpacity style={styles.logarCod}>
+        <ThemedText>Create an account!</ThemedText>
+      </TouchableOpacity></Link>
         <ThemedText style={styles.pass}>Forgot password?</ThemedText>
         <br></br>
         <ThemedView style={styles.checkContainer}>
         <CheckBox style={styles.checkbox}/>
-        <ThemedText style={styles.check}>Remember me</ThemedText>
+        <ThemedText>Remember me</ThemedText>
         </ThemedView>
-        <ThemedText style={styles.textobranco}>New to netflix? Sign up now</ThemedText>
-        <ThemedText style={styles.textoCaptcha}>This page is protected by Google reCAPTCHA to ensure you're not a bot. <ThemedText style={styles.learn}> Learn more</ThemedText></ThemedText>
+        <ThemedText style={styles.textoCaptcha}>This page is protected by Google reCAPTCHA to ensure you're not a bot. <ThemedText style={styles.learn} onPress={() => Linking.openURL('https://support.google.com/recaptcha/?hl=en')}> Learn more</ThemedText></ThemedText>
       </ThemedView>    
       </ImageBackground>
       </ThemedView>
@@ -46,26 +44,24 @@ const styles = StyleSheet.create({
       padding: 0,
       backgroundColor: 'black',
     },
-    loginContainer: {
-      padding: '5%',
-      backgroundColor: 'rgba(0, 0, 0, 0.6)', // Cor de fundo do container
-      resizeMode: 'cover',
-      width: 350,
-      marginTop: 90,
-       },
     alinhar: {
       alignItems: 'center',
-      margin: 6,
-      backgroundColor: 'rgba(0, 0, 0, 0.0)',
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
       paddingTop: 20,
+      resizeMode: 'cover',
+      margin: '5%',
+      marginTop: 70,
     },
     textobranco: {
       color: 'white',
+      paddingRight: 95,
     },
     signIn: {
       color: 'white',
       fontSize: 25,
       marginTop: 15,
+      paddingRight: 227,
+      marginBottom: 14,
    },
     learn: {
       color: '#0000FF',
@@ -75,7 +71,6 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: 'white',
       fontSize: 20,
-      marginTop: 1,
     },
     pass: {
       textAlign: 'center',
@@ -85,8 +80,8 @@ const styles = StyleSheet.create({
       color: 'rgba(265, 265, 265, 0.3)',
       width: 300,
       height: 45,
-      marginTop: 15,
-      padding: 5,
+      marginTop: 20,
+      padding: 8,
       shadowColor: 'white',
       borderBottomWidth: 1.2,
       borderBottomColor: '#f3f3f3',
@@ -103,7 +98,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       width: '100%',
       height: '160%',
-      opacity: 70,
       },
       overlay: {
         position: 'absolute',
@@ -112,7 +106,7 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
         height: '290%',
-        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Fundo semi-transparente para diminuir a opacidade
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Fundo semi-transparente para diminuir a opacidade
       },
       logar: {
         backgroundColor: '#E50914',
@@ -127,7 +121,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(265, 265, 265, 0.1)',
         width: 300,
         height: 45,
-        margin: '10%',
+        marginTop: '10%',
+        marginBottom: '10%',
         alignContent: 'center',
         alignItems: 'center',
         paddingTop: 10,
@@ -144,6 +139,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
         padding: '5%',
+        paddingRight: 170,
       },
       checkbox: {
         width: 15,
@@ -154,7 +150,19 @@ const styles = StyleSheet.create({
       },
       textoCaptcha: {
         fontSize: 10,
-        padding: 30
+        marginLeft: '15%',
+        marginRight: '15%',
+        padding: 20,
+        textDecorationLine: 'underline',
+      },
+      logo: {
+        width: '37%',
+        height: '15%',  
+        resizeMode: 'contain',
+        position: 'relative',
+        zIndex: 999,
+        top: 70,
+        left: 20,
       }
 
   },
