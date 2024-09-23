@@ -1,9 +1,15 @@
-import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity, CheckBox, Linking } from 'react-native';
+/* npm install - npm install @rneui/themed @rneui/base
+   não esquece de ler os termos de uso, siles, te amamos very much */
+import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, CheckBox, TouchableOpacity, Linking } from 'react-native';
 
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Link } from '@react-navigation/native';
+import { Button } from '@rneui/themed';
+import { color } from '@rneui/base';
+
+
 
 
 export default function HomeScreen() {
@@ -12,20 +18,16 @@ export default function HomeScreen() {
     <ImageBackground source={require('./fundo.jpg')} style={styles.background}>
     <Image style={styles.logo} source={require('./netflix.png')}></Image>
     <View style={styles.overlay} />
-    <ThemedView style={styles.alinhar}><ThemedView style={styles.loginContainer}></ThemedView>
+    <ThemedView style={styles.alinhar}><ThemedView></ThemedView>
           <ThemedText style={styles.signIn}>Sign In</ThemedText>
           <TextInput style={styles.input} placeholder='Email or phone number'></TextInput>
-          <br></br>
+        
           <TextInput style={styles.input} placeholder='Password' secureTextEntry={true}></TextInput>
-          <TouchableOpacity style={styles.logar}>
-        <ThemedText>Sign In</ThemedText>
-      </TouchableOpacity> 
+          <Button buttonStyle={styles.logar} color="error">Sign In</Button>
         <ThemedText style={styles.or}>Or</ThemedText>
-        <Link to='/signUp'><TouchableOpacity style={styles.logarCod}>
-        <ThemedText>Create an account!</ThemedText>
-      </TouchableOpacity></Link>
+        <Link to='/signUp'> <Button title="Create an Account" titleStyle={{color: 'white'}}type="clear" buttonStyle={styles.logarCod}/></Link>
         <ThemedText style={styles.pass}>Forgot password?</ThemedText>
-        <br></br>
+    
         <ThemedView style={styles.checkContainer}>
         <CheckBox style={styles.checkbox}/>
         <ThemedText>Remember me</ThemedText>
@@ -112,7 +114,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#E50914',
         width: 300,
         height: 45,
-        margin: '10%',
+        marginTop: '10%',
+        marginBottom: '10%',
         alignContent: 'center',
         alignItems: 'center',
         paddingTop: 10,
@@ -120,6 +123,8 @@ const styles = StyleSheet.create({
       logarCod: {
         backgroundColor: 'rgba(265, 265, 265, 0.1)',
         width: 300,
+        color: 'white',
+        fontStyle: 'normal',
         height: 45,
         marginTop: '10%',
         marginBottom: '10%',
@@ -128,7 +133,7 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         borderBottomWidth: 1.2,
         borderBottomColor: '#f3f3f3',
-        borderRightWidth: 1.2,
+        borderRightWidth: 1.5,
         borderRightColor: 'white',
         borderLeftWidth: 1,
         borderLeftColor: 'grey',

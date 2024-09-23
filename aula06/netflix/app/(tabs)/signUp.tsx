@@ -1,10 +1,10 @@
-import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, Button, TouchableOpacity, CheckBox, Linking } from 'react-native';
+import { Image, StyleSheet, TextInput, Platform, ImageBackground, View, TouchableOpacity, CheckBox, Linking } from 'react-native';
 
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Link } from '@react-navigation/native';
-
+import { Button } from '@rneui/themed';
 
 
 export default function SignUp() {
@@ -13,7 +13,7 @@ export default function SignUp() {
     <ImageBackground source={require('./fundo.jpg')} style={styles.background}>
     <Image style={styles.logo} source={require('./netflix.png')}></Image>
     
-    <Link to='/homepage'>
+    <Link to='/'>
     <Image style={styles.voltar} source={require('./seta.png')}>
     </Image>
     </Link>
@@ -33,9 +33,7 @@ export default function SignUp() {
         <ThemedText style={styles.agree}>I agree with the terms and conditions </ThemedText>
         </Link>
         </ThemedView>
-        <TouchableOpacity style={styles.logar}>
-        <ThemedText>Sign Up</ThemedText>
-      </TouchableOpacity> 
+        <Button buttonStyle={styles.logar} color="error">Sign Up</Button>
       </ThemedView>    
       </ImageBackground>
       </ThemedView>
@@ -151,7 +149,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#E50914',
         width: 300,
         height: 45,
-        margin: '10%',
+        marginTop: '10%',
+        marginBottom: '10%',
         alignContent: 'center',
         alignItems: 'center',
         paddingTop: 10,
